@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>Frontend Mentor | Base Apparel coming soon page</title>
+  </head>
+  <body>
+    <!-- 1500w, /images/hero-mobile.jpg 1350w -->
+    <img
+      class="image"
+      srcset="/images/hero-desktop.jpg 1500w, /images/hero-mobile.jpg 900w"
+      alt="main image for website"
+    />
+    <div class="main">
+      <nav class="navbar">
+        <img src="/images/logo.svg" alt="logo image" />
+      </nav>
+      <div class="content">
+        <h1><span>We're</span><br />coming<br />soon</h1>
+        <p>
+          Hello fellow shoppers! We're currently building our new fashion store.
+          Add your email below to stay up-to-date with announcements and our
+          launch deals.
+        </p>
+        <form class="input-wrapper">
+          <img
+            src="/images/icon-error.svg"
+            alt="error-icon"
+            class="error-icon"
+          />
+          <input type="email" placeholder="Email Address" />
+          <button type="submit">
+            <img src="/images/icon-arrow.svg" alt="Arrow to confirm" />
+          </button>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >.<br />Coded by <a href="https://bogdankostyuk.xyz">Bogdan Kostyuk</a>.
+      </p>
+    </footer>
+    <img
+      class="bg-image"
+      alt="bg-pattern"
+      src="/images/bg-pattern-desktop.svg"
+    />
+    <script>
+      const input = document.querySelector('input');
+      const errorIcon = document.querySelector('.error-icon');
+
+      input.addEventListener('invalid', () => {
+        console.log('Invalid');
+        errorIcon.classList.toggle('show');
+      });
+    </script>
+  </body>
+</html>
