@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+$neutral: hsl(0, 6%, 24%);
+$red: hsl(0, 36%, 70%);
+$soft-red: hsl(0, 93%, 68%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  flex: 1;
+  background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+  flex-direction: row-reverse;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 5rem 12vw;
+  text-align: left;
+
+  h1 {
+    font-size: 56px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 25px;
+    line-height: 1;
+    text-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+    margin-bottom: 3rem;
+    color: $neutral;
+
+    span {
+      color: $red;
+      font-weight: 200;
+    }
+  }
+
+  p {
+    color: $red;
+    line-height: 2;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-right: auto;
+  }
+
+  .input-wrapper {
+    width: 100%;
+    max-width: 550px;
+    height: 50px;
+    position: relative;
+
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba($color: $red, $alpha: 0.3);
+      outline: none;
+      background-color: transparent;
+      border-radius: 99999px;
+      font: inherit;
+      font-size: 1.2rem;
+      padding: 0.2rem 1.75rem;
+      padding-right: 130px;
+      color: $red;
+      transition: border-color 200ms ease-in;
+
+      &:invalid {
+        border-color: $soft-red;
+        box-shadow: 0 0 10px rgba($color: $soft-red, $alpha: 0.2);
+      }
+    }
+
+    .error-icon {
+      position: absolute;
+      top: 50%;
+      right: 100px;
+      transform: translateY(-50%);
+      transition: opacity 200ms ease-in-out;
+      opacity: 0;
+
+      &.show {
+        opacity: 1;
+      }
+    }
+
+    button {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      height: 100%;
+      width: 90px;
+      border: none;
+      border-radius: 9999px;
+      outline: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+      box-shadow: 0 0 10px rgba($color: $red, $alpha: 0.5);
+      transition: transform 200ms ease-out;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+
+        &::after {
+          opacity: 1;
+        }
+      }
+
+      &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -10;
+        top: 0;
+        left: 0;
+        border-radius: 9999px;
+        box-shadow: 0 10px 10px rgba($color: #000000, $alpha: 0.2);
+        opacity: 0;
+        transition: opacity 200ms ease-in;
+      }
+      img {
+        transform: translateX(1px);
+      }
+    }
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.bg-image {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.navbar {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5rem;
+
+  img {
+    height: 35px;
+    width: auto;
+  }
+}
+
+footer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-150%);
+  bottom: 10px;
+  font-size: 12px;
+  width: 300px;
+
+  .attribution {
+    width: 100%;
+    text-align: center;
+    color: rgba($color: $neutral, $alpha: 0.3);
+
+    a {
+      color: rgba($color: $neutral, $alpha: 0.3);
+      font-weight: bolder;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
+  .main {
+    padding-top: 2rem;
+    padding-bottom: 0;
+
+    h1 {
+      font-size: 36px;
+      text-align: center;
+      letter-spacing: 15px;
+    }
+    p {
+      text-align: center;
+    }
+    .input-wrapper > input {
+      padding-right: 80px;
+    }
+    .input-wrapper > button {
+      width: 60px;
+    }
+  }
+  .image {
+    width: 100%;
+    height: auto;
+    padding-top: 3rem;
+    object-fit: cover;
+  }
+  .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+
+    img {
+      height: 20px;
+      width: auto;
+    }
+  }
+  footer {
+    transform: translateX(-50%);
+  }
+}
